@@ -19,11 +19,15 @@ class TNSecondaryTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
+    convenience init(fontWeight: UIFont.Weight) {
+        self.init(frame: .zero)
+        font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: fontWeight))
+    }
+    
     private func configure() {
         translatesAutoresizingMaskIntoConstraints = false
         
         textAlignment = .left
         textColor = .secondaryLabel
-        font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: .heavy))
     }
 }

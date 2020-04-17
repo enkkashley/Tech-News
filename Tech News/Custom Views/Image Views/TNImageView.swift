@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TNFeaturedStoryImageView: UIImageView {
+class TNImageView: UIImageView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,9 +20,21 @@ class TNFeaturedStoryImageView: UIImageView {
     }
     
     private func configure() {
-        backgroundColor = .systemBlue
+        contentMode = .scaleAspectFill
         layer.cornerRadius = 8
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func downloadImage(fromURL url: String?) {
+        print("downloading image")
+        guard let url = url else { return }
+        
+        NetworkManager.shared.downloadImage(fromURL: url) { [weak self] image in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.image = image
+            }
+        }
     }
 }

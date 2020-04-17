@@ -8,14 +8,14 @@
 
 import UIKit
 
-class TNFeaturedStoryView: UIView {
+class TNHeaderStoryView: UIView {
     
     let padding: CGFloat = 12
     
-    let storyImageView = TNFeaturedStoryImageView(frame: .zero)
-    let sourceLabel = TNSecondaryTitleLabel()
-    let titleLabel = TNTitleLabel(fontSize: 20, numberOfLines: 2)
-    let timeLabel = TNSecondaryTitleLabel()
+    let articleImageView = TNImageView(frame: .zero)
+    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .heavy)
+    let titleLabel = TNTitleLabel(fontWeight: .heavy,fontSize: 20, numberOfLines: 2)
+    let timeLabel = TNSecondaryTitleLabel(fontWeight: .heavy)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,33 +28,32 @@ class TNFeaturedStoryView: UIView {
     
     private func configure() {
         configureView()
-        configureStoryImageView()
+        configureArticleImageView()
         configureSourceLabel()
         configureTitleLabel()
         configureTimeLabel()
     }
     
     private func configureView() {
-        frame.size.height = 335
+        frame.size.height = 350
     }
     
-    private func configureStoryImageView() {
-        addSubview(storyImageView)
+    private func configureArticleImageView() {
+        addSubview(articleImageView)
         
         NSLayoutConstraint.activate([
-            storyImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
-            storyImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            storyImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            storyImageView.heightAnchor.constraint(equalToConstant: 204)
+            articleImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: padding),
+            articleImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
+            articleImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
+            articleImageView.heightAnchor.constraint(equalToConstant: 204)
         ])
     }
     
     private func configureSourceLabel() {
         addSubview(sourceLabel)
-        sourceLabel.text = "The Verge"
         
         NSLayoutConstraint.activate([
-            sourceLabel.topAnchor.constraint(equalTo: storyImageView.bottomAnchor, constant: 10),
+            sourceLabel.topAnchor.constraint(equalTo: articleImageView.bottomAnchor, constant: 10),
             sourceLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             sourceLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             sourceLabel.heightAnchor.constraint(equalToConstant: 20)
@@ -63,7 +62,6 @@ class TNFeaturedStoryView: UIView {
     
     private func configureTitleLabel() {
         addSubview(titleLabel)
-        titleLabel.text = "Now Nintendo Switch owners can move games from internal to external storage without downloading them again."
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor),
@@ -75,7 +73,6 @@ class TNFeaturedStoryView: UIView {
     
     private func configureTimeLabel() {
         addSubview(timeLabel)
-        timeLabel.text = "2hrs ago"
         
         NSLayoutConstraint.activate([
             timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
@@ -83,5 +80,12 @@ class TNFeaturedStoryView: UIView {
             timeLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             timeLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
+    }
+    
+    func set(headerStory: Article) {
+        articleImageView.downloadImage(fromURL: headerStory.urlToImage)
+        sourceLabel.text = headerStory.source.name
+        titleLabel.text = headerStory.title
+        timeLabel.text = headerStory.publishedAt
     }
 }

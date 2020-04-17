@@ -19,10 +19,10 @@ class TNTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(fontSize: CGFloat, numberOfLines: Int) {
+    convenience init(fontWeight: UIFont.Weight, fontSize: CGFloat, numberOfLines: Int) {
         self.init(frame: .zero)
         self.numberOfLines = numberOfLines
-        font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: fontSize, weight: .heavy))
+        font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: fontSize, weight: fontWeight))
     }
     
     
