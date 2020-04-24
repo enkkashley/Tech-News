@@ -13,9 +13,9 @@ class TNHeaderStoryView: UIView {
     let padding: CGFloat = 12
     
     let articleImageView = TNImageView(frame: .zero)
-    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .heavy)
+    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .heavy, fontSize: 17)
     let titleLabel = TNTitleLabel(fontWeight: .heavy,fontSize: 20, numberOfLines: 2)
-    let timeLabel = TNSecondaryTitleLabel(fontWeight: .heavy)
+    let timeLabel = TNSecondaryTitleLabel(fontWeight: .heavy, fontSize: 17)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -86,6 +86,6 @@ class TNHeaderStoryView: UIView {
         articleImageView.downloadImage(fromURL: headerStory.urlToImage)
         sourceLabel.text = headerStory.source.name
         titleLabel.text = headerStory.title
-        timeLabel.text = headerStory.publishedAt
+        timeLabel.text = headerStory.publishedAt.convertToDisplayDate()
     }
 }

@@ -19,9 +19,9 @@ class TNSecondaryTitleLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(fontWeight: UIFont.Weight) {
+    convenience init(fontWeight: UIFont.Weight, fontSize: CGFloat) {
         self.init(frame: .zero)
-        font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: 17, weight: fontWeight))
+        font = UIFontMetrics.default.scaledFont(for: UIFont.systemFont(ofSize: fontSize, weight: fontWeight))
     }
     
     private func configure() {

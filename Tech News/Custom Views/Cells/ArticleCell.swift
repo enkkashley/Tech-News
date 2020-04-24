@@ -14,9 +14,9 @@ class ArticleCell: UITableViewCell {
     
     let padding: CGFloat = 12
     let articleImageView = TNImageView(frame: .zero)
-    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .bold)
+    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .bold, fontSize: 17)
     let titleLabel = TNTitleLabel(fontWeight: .bold,fontSize: 17, numberOfLines: 4)
-    let timeLabel = TNSecondaryTitleLabel(fontWeight: .bold)
+    let timeLabel = TNSecondaryTitleLabel(fontWeight: .bold, fontSize: 17)
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -82,6 +82,6 @@ class ArticleCell: UITableViewCell {
         articleImageView.downloadImage(fromURL: article.urlToImage)
         sourceLabel.text = article.source.name
         titleLabel.text = article.title
-        timeLabel.text = article.publishedAt
+        timeLabel.text = article.publishedAt.convertToDisplayDate()
     }
 }

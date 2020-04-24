@@ -24,16 +24,19 @@ class TNImageView: UIImageView {
         layer.cornerRadius = 8
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
+        image = UIImage(named: "storyPlaceholder")
     }
     
     func downloadImage(fromURL url: String?) {
-        print("downloading image")
         guard let url = url else { return }
         
         NetworkManager.shared.downloadImage(fromURL: url) { [weak self] image in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                self.image = image
+              
+//                UIView.transition(with: self, duration: 3, options: .curveLinear, animations: {
+                    self.image = image
+//                })
             }
         }
     }

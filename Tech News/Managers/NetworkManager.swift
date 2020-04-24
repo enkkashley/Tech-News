@@ -10,11 +10,13 @@ import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
+    let cache = NSCache<NSString, UIImage>()
+    
     private init() {}
     
     private let baseURL = "https://newsapi.org/v2/"
     private let apiKey = "API_KEY"
-    private let sources = "ars-technica,crypto-coins-news,engadget,hacker-news,recode,techcrunch,techradar,the-next-web,the-verge,wired"
+    private let sources = "engadget,recode,techcrunch,techradar,the-next-web,the-verge,wired"
     
     
     
@@ -58,12 +60,18 @@ class NetworkManager {
     
     func downloadImage(fromURL urlToImage: String, completed: @escaping (UIImage?) -> Void) {
         
+        let cacheKey = NSString(string: urlToImage)
+        
         guard let url = URL(string: urlToImage) else {
             return
         }
         
+        if let image = cache.object(forKey: cacheKey) {
+            completed(image)
+            return
+        }
+        
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
             if error != nil {
                 return
             }
@@ -76,7 +84,9 @@ class NetworkManager {
                 return
             }
             
-            let image = UIImage(data: data)
+            guard let image = UIImage(data: data) else { return }
+            
+            self.cache.setObject(image, forKey: cacheKey)
             completed(image)
         }
         

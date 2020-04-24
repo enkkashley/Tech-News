@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3224BDE524522DCF00D861F6 /* TNLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224BDE424522DCF00D861F6 /* TNLoadingView.swift */; };
+		3224BDE72452338E00D861F6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224BDE62452338E00D861F6 /* UIViewController+Ext.swift */; };
 		3285A8FA244797BF00C1E9B9 /* TNHeaderStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A8F9244797BF00C1E9B9 /* TNHeaderStoryView.swift */; };
 		3285A8FE24479E5600C1E9B9 /* TNImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A8FD24479E5600C1E9B9 /* TNImageView.swift */; };
 		3285A9022447A10700C1E9B9 /* TNSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A9012447A10700C1E9B9 /* TNSecondaryTitleLabel.swift */; };
@@ -18,6 +20,9 @@
 		3285A9122448C7AF00C1E9B9 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A9112448C7AF00C1E9B9 /* NetworkManager.swift */; };
 		3285A9152448D05E00C1E9B9 /* TNError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A9142448D05E00C1E9B9 /* TNError.swift */; };
 		3285A918244A0A5D00C1E9B9 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A917244A0A5D00C1E9B9 /* ArticleCell.swift */; };
+		3285A91B244C99CD00C1E9B9 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A91A244C99CD00C1E9B9 /* String+Ext.swift */; };
+		3285A91D244DC98900C1E9B9 /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A91C244DC98900C1E9B9 /* Array+Ext.swift */; };
+		3285A91F244E103600C1E9B9 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A91E244E103500C1E9B9 /* Date+Ext.swift */; };
 		32B71AE024477CBC00D2A738 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B71ADF24477CBC00D2A738 /* AppDelegate.swift */; };
 		32B71AE224477CBC00D2A738 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B71AE124477CBC00D2A738 /* SceneDelegate.swift */; };
 		32B71AE424477CBC00D2A738 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B71AE324477CBC00D2A738 /* NewsViewController.swift */; };
@@ -27,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3224BDE424522DCF00D861F6 /* TNLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNLoadingView.swift; sourceTree = "<group>"; };
+		3224BDE62452338E00D861F6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		3285A8F9244797BF00C1E9B9 /* TNHeaderStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNHeaderStoryView.swift; sourceTree = "<group>"; };
 		3285A8FD24479E5600C1E9B9 /* TNImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNImageView.swift; sourceTree = "<group>"; };
 		3285A9012447A10700C1E9B9 /* TNSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSecondaryTitleLabel.swift; sourceTree = "<group>"; };
@@ -38,6 +45,9 @@
 		3285A9112448C7AF00C1E9B9 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3285A9142448D05E00C1E9B9 /* TNError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNError.swift; sourceTree = "<group>"; };
 		3285A917244A0A5D00C1E9B9 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
+		3285A91A244C99CD00C1E9B9 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		3285A91C244DC98900C1E9B9 /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
+		3285A91E244E103500C1E9B9 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		32B71ADC24477CBC00D2A738 /* Tech News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tech News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32B71ADF24477CBC00D2A738 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32B71AE124477CBC00D2A738 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				3285A8F9244797BF00C1E9B9 /* TNHeaderStoryView.swift */,
+				3224BDE424522DCF00D861F6 /* TNLoadingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +160,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		3285A919244C99AF00C1E9B9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3285A91A244C99CD00C1E9B9 /* String+Ext.swift */,
+				3285A91C244DC98900C1E9B9 /* Array+Ext.swift */,
+				3285A91E244E103500C1E9B9 /* Date+Ext.swift */,
+				3224BDE62452338E00D861F6 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		32B71AD324477CBC00D2A738 = {
 			isa = PBXGroup;
 			children = (
@@ -168,10 +190,11 @@
 		32B71ADE24477CBC00D2A738 /* Tech News */ = {
 			isa = PBXGroup;
 			children = (
+				3285A919244C99AF00C1E9B9 /* Extensions */,
+				3285A8F82447977400C1E9B9 /* Support */,
 				3285A9132448D03E00C1E9B9 /* Utilities */,
 				3285A9102448C78C00C1E9B9 /* Managers */,
 				3285A9082448874100C1E9B9 /* Model */,
-				3285A8F82447977400C1E9B9 /* Support */,
 				3285A8F72447976700C1E9B9 /* Custom Views */,
 				32B71AF324477E3400D2A738 /* Screens */,
 				32B71AED24477CC200D2A738 /* Info.plist */,
@@ -267,11 +290,16 @@
 				32B71AE424477CBC00D2A738 /* NewsViewController.swift in Sources */,
 				3285A90A2448875A00C1E9B9 /* Response.swift in Sources */,
 				3285A918244A0A5D00C1E9B9 /* ArticleCell.swift in Sources */,
+				3285A91F244E103600C1E9B9 /* Date+Ext.swift in Sources */,
 				32B71AE024477CBC00D2A738 /* AppDelegate.swift in Sources */,
 				3285A9042447A77600C1E9B9 /* TNTitleLabel.swift in Sources */,
+				3285A91D244DC98900C1E9B9 /* Array+Ext.swift in Sources */,
 				3285A90F2448895E00C1E9B9 /* Source.swift in Sources */,
+				3224BDE72452338E00D861F6 /* UIViewController+Ext.swift in Sources */,
 				3285A8FE24479E5600C1E9B9 /* TNImageView.swift in Sources */,
+				3224BDE524522DCF00D861F6 /* TNLoadingView.swift in Sources */,
 				32B71AE224477CBC00D2A738 /* SceneDelegate.swift in Sources */,
+				3285A91B244C99CD00C1E9B9 /* String+Ext.swift in Sources */,
 				3285A9072447B43700C1E9B9 /* TNTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
