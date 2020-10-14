@@ -30,7 +30,7 @@ class NetworkManager {
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            
+            print("Requesting")
             if error != nil {
                 completed(.failure(.unableToSendRequest))
                 return
@@ -45,7 +45,7 @@ class NetworkManager {
                 completed(.failure(.noDataReceived))
                 return
             }
-            
+            print("Got Data")
             do {
                 let decoder = JSONDecoder()
                 let response = try decoder.decode(Response.self, from: data)
@@ -67,11 +67,13 @@ class NetworkManager {
         }
         
         if let image = cache.object(forKey: cacheKey) {
+            print("image cached")
             completed(image)
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            print("downloading image")
             if error != nil {
                 return
             }

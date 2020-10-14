@@ -16,6 +16,8 @@ class TNHeaderStoryView: UIView {
     let sourceLabel = TNSecondaryTitleLabel(fontWeight: .heavy, fontSize: 17)
     let titleLabel = TNTitleLabel(fontWeight: .heavy,fontSize: 20, numberOfLines: 2)
     let timeLabel = TNSecondaryTitleLabel(fontWeight: .heavy, fontSize: 17)
+    
+    var articleURL: String?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -87,5 +89,7 @@ class TNHeaderStoryView: UIView {
         sourceLabel.text = headerStory.source.name
         titleLabel.text = headerStory.title
         timeLabel.text = headerStory.publishedAt.convertToDisplayDate()
+        
+        articleURL = headerStory.url
     }
 }

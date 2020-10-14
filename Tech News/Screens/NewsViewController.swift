@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import SafariServices
 
 class NewsViewController: UIViewController {
     
     let tableView = UITableView()
+    let refreshControl = UIRefreshControl()
+    let headerStoryView = TNHeaderStoryView()
     let tableViewFooterView = TNLoadingView()
     var articles = [Article]()
     var page = 1
     var hasMoreNews = true
     var networkManagerIsLoadingMoreNews = false
+    
+    var dataSource: UITableViewDiffableDataSource<Section, Article>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +29,51 @@ class NewsViewController: UIViewController {
         getNews(page: page)
     }
     
+    
+    func configureViewController() {
+        view.backgroundColor = .systemBackground
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    func configureTableView() {
+        view.addSubview(tableView)
+        
+        tableView.delegate = self
+        tableView.frame = view.bounds
+        tableView.rowHeight = 150
+        
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseIdentifier)
+        
+        dataSource = UITableViewDiffableDataSource(tableView: tableView, cellProvider: { (tableView, indexPath, article) -> UITableViewCell? in
+            
+            let articleCell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseIdentifier, for: indexPath) as! ArticleCell
+            
+            articleCell.set(article: article)
+            return articleCell
+        })
+        
+        configureRefreshControl()
+    }
+    
+    func configureRefreshControl() {
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+    }
+    
+    @objc func handleRefresh() {
+        page = 1
+        getNews(page: page)
+        refreshControl.endRefreshing()
+    }
+    
     func getNews(page: Int) {
+        
         if page == 1 { showLoadingView() }
         networkManagerIsLoadingMoreNews = true
         
         NetworkManager.shared.getNews(page: page) { [weak self] result in
             guard let self = self else { return }
+            
             if page == 1 {
                 self.dismissLoadingView()
             } else {
@@ -69,53 +113,47 @@ class NewsViewController: UIViewController {
     }
     
     func updateHeaderStoryUI(with article: Article) {
+        
         DispatchQueue.main.async {
-            let headerStoryView = TNHeaderStoryView()
-            headerStoryView.set(headerStory: article)
-            self.tableView.tableHeaderView = headerStoryView
+            self.headerStoryView.set(headerStory: article)
+//            self.headerStoryView.addTarget(self, action: #selector(self.handleHeaderStoryTapped), for: .touchUpInside)
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleHeaderStoryTapped))
+            self.headerStoryView.addGestureRecognizer(tapGesture)
+            self.tableView.tableHeaderView = self.headerStoryView
         }
     }
     
+    @objc func handleHeaderStoryTapped() {
+        let urlString = headerStoryView.articleURL!
+
+        guard let url = URL(string: urlString) else { return }
+
+        let safariViewController = SFSafariViewController(url: url)
+
+        present(safariViewController, animated: true)
+    }
     
     func updateTableViewUI(with articles: [Article]) {
-        self.articles.append(contentsOf: articles)
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
+        if page == 1 {
+            self.articles = articles
+        } else {
+            self.articles.append(contentsOf: articles)
         }
+
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Article>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(articles)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
-    
-    
-    func configureViewController() {
-        view.backgroundColor = .systemBackground
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
-    func configureTableView() {
-        view.addSubview(tableView)
-        
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.frame = view.bounds
-        tableView.rowHeight = 150
-        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseIdentifier)
+
+}
+
+extension NewsViewController {
+    enum Section {
+        case main
     }
 }
 
-extension NewsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articles.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let articleCell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseIdentifier, for: indexPath) as! ArticleCell
-        let article = articles[indexPath.row]
-        
-        articleCell.set(article: article)
-        
-        return articleCell
-    }
-}
 
 extension NewsViewController: UITableViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -128,12 +166,23 @@ extension NewsViewController: UITableViewDelegate {
             self.tableView.tableFooterView = tableViewFooterView
             // check if there're more news to be fetched and if the network manager isn't making any requests
             guard hasMoreNews, !networkManagerIsLoadingMoreNews else {
+                // remove footerView if there's no more news
                 self.tableView.tableFooterView = nil
                 return
             }
             page += 1
             getNews(page: page)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let urlString = articles[indexPath.row].url
+        guard let url = URL(string: urlString) else { return }
+        
+        let safariViewController = SFSafariViewController(url: url)
+        
+        present(safariViewController, animated: true)
     }
 }
 
