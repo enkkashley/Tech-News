@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TNImageView: UIImageView {
 
@@ -24,20 +25,12 @@ class TNImageView: UIImageView {
         layer.cornerRadius = 8
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
-        image = UIImage(named: "storyPlaceholder")
     }
     
     func downloadImage(fromURL url: String?) {
         guard let url = url else { return }
         
-        NetworkManager.shared.downloadImage(fromURL: url) { [weak self] image in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-            
-//                UIView.transition(with: self, duration: 3, options: .curveLinear, animations: {
-                    self.image = image
-//                })
-            }
-        }
+        sd_setImage(with: URL(string: url), placeholderImage: UIImage(named: "storyPlaceholder"))
+        sd_imageTransition = .fade
     }
 }

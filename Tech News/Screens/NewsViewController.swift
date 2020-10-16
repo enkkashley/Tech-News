@@ -62,6 +62,8 @@ class NewsViewController: UIViewController {
     
     @objc func handleRefresh() {
         page = 1
+        hasMoreNews = true
+        
         getNews(page: page)
         refreshControl.endRefreshing()
     }
@@ -116,7 +118,6 @@ class NewsViewController: UIViewController {
         
         DispatchQueue.main.async {
             self.headerStoryView.set(headerStory: article)
-//            self.headerStoryView.addTarget(self, action: #selector(self.handleHeaderStoryTapped), for: .touchUpInside)
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleHeaderStoryTapped))
             self.headerStoryView.addGestureRecognizer(tapGesture)
             self.tableView.tableHeaderView = self.headerStoryView
@@ -142,7 +143,7 @@ class NewsViewController: UIViewController {
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, Article>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(articles)
+        snapshot.appendItems(self.articles)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 
