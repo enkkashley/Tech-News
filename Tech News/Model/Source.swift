@@ -9,6 +9,6 @@
 import Foundation
 
 struct Source: Hashable, Decodable {
-    let id: String
+    let id: String?
     let name: String
 }

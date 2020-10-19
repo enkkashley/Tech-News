@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3224BDE524522DCF00D861F6 /* TNLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224BDE424522DCF00D861F6 /* TNLoadingView.swift */; };
 		3224BDE72452338E00D861F6 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224BDE62452338E00D861F6 /* UIViewController+Ext.swift */; };
+		326614A7253C6253000A032F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326614A6253C6253000A032F /* Constants.swift */; };
+		326614AA253C62B4000A032F /* ArticleSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326614A9253C62B4000A032F /* ArticleSearchResultCell.swift */; };
+		326614AE253DA347000A032F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326614AD253DA347000A032F /* Endpoint.swift */; };
 		3285A8FA244797BF00C1E9B9 /* TNHeaderStoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A8F9244797BF00C1E9B9 /* TNHeaderStoryView.swift */; };
 		3285A8FE24479E5600C1E9B9 /* TNImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A8FD24479E5600C1E9B9 /* TNImageView.swift */; };
 		3285A9022447A10700C1E9B9 /* TNSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3285A9012447A10700C1E9B9 /* TNSecondaryTitleLabel.swift */; };
@@ -35,6 +38,9 @@
 /* Begin PBXFileReference section */
 		3224BDE424522DCF00D861F6 /* TNLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNLoadingView.swift; sourceTree = "<group>"; };
 		3224BDE62452338E00D861F6 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		326614A6253C6253000A032F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		326614A9253C62B4000A032F /* ArticleSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSearchResultCell.swift; sourceTree = "<group>"; };
+		326614AD253DA347000A032F /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		3285A8F9244797BF00C1E9B9 /* TNHeaderStoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNHeaderStoryView.swift; sourceTree = "<group>"; };
 		3285A8FD24479E5600C1E9B9 /* TNImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNImageView.swift; sourceTree = "<group>"; };
 		3285A9012447A10700C1E9B9 /* TNSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNSecondaryTitleLabel.swift; sourceTree = "<group>"; };
@@ -71,6 +77,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		326614AC253DA332000A032F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3285A9112448C7AF00C1E9B9 /* NetworkManager.swift */,
+				326614AD253DA347000A032F /* Endpoint.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		3285A8F72447976700C1E9B9 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +156,7 @@
 		3285A9102448C78C00C1E9B9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3285A9112448C7AF00C1E9B9 /* NetworkManager.swift */,
+				326614AC253DA332000A032F /* Network */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -150,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				3285A9142448D05E00C1E9B9 /* TNError.swift */,
+				326614A6253C6253000A032F /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -158,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				3285A917244A0A5D00C1E9B9 /* ArticleCell.swift */,
+				326614A9253C62B4000A032F /* ArticleSearchResultCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -300,10 +317,13 @@
 				3285A918244A0A5D00C1E9B9 /* ArticleCell.swift in Sources */,
 				3285A91F244E103600C1E9B9 /* Date+Ext.swift in Sources */,
 				32B71AE024477CBC00D2A738 /* AppDelegate.swift in Sources */,
+				326614A7253C6253000A032F /* Constants.swift in Sources */,
 				3285A9042447A77600C1E9B9 /* TNTitleLabel.swift in Sources */,
+				326614AA253C62B4000A032F /* ArticleSearchResultCell.swift in Sources */,
 				3285A91D244DC98900C1E9B9 /* Array+Ext.swift in Sources */,
 				3285A90F2448895E00C1E9B9 /* Source.swift in Sources */,
 				3224BDE72452338E00D861F6 /* UIViewController+Ext.swift in Sources */,
+				326614AE253DA347000A032F /* Endpoint.swift in Sources */,
 				3285A8FE24479E5600C1E9B9 /* TNImageView.swift in Sources */,
 				3224BDE524522DCF00D861F6 /* TNLoadingView.swift in Sources */,
 				32B71AE224477CBC00D2A738 /* SceneDelegate.swift in Sources */,

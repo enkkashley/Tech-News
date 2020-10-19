@@ -149,13 +149,6 @@ class NewsViewController: UIViewController {
 
 }
 
-extension NewsViewController {
-    enum Section {
-        case main
-    }
-}
-
-
 extension NewsViewController: UITableViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offsetY = scrollView.contentOffset.y
