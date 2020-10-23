@@ -31,10 +31,6 @@ extension Endpoint {
 
 extension Endpoint {
     static func domains() -> String {
-        "arstechnica.com,engadget.com,recode.net,techcrunch.com,techradar.com,thenextweb.com,theverge.com,wired.com"
-    }
-    
-    static func sources() -> String {
-        "ars-technica,engadget,recode,techcrunch,techradar,the-next-web,the-verge,wired"
+        "arstechnica.com,engadget.com,recode.net,techcrunch.com,techradar.com,thenextweb.com,theverge.com,wired.com,9to5mac.com,macrumors.com,androidcentral.com,androidpolice.com,9to5google.com,cnet.com,gizmodo.com,androidauthority.com,cultofmac.com,macworld.com,appleinsider.com,imore.com,mashable.com,pcmag.com,thehackernews.com"
     }
 }

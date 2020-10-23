@@ -170,13 +170,9 @@ extension NewsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let urlString = articles[indexPath.row].url
-        guard let url = URL(string: urlString) else { return }
         
-        let safariViewController = SFSafariViewController(url: url)
-        
-        present(safariViewController, animated: true)
+        presentSafariViewController(with: urlString)
     }
 }
 

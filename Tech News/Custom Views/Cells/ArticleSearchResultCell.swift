@@ -14,9 +14,9 @@ class ArticleSearchResultCell: UITableViewCell {
     let padding: CGFloat = 12
     
     let articleImageView = TNImageView(frame: .zero)
-    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .bold, fontSize: 10)
-    let titleLabel = TNTitleLabel(fontWeight: .bold, fontSize: 10, numberOfLines: 2)
-    let timeLabel = TNSecondaryTitleLabel(fontWeight: .bold, fontSize: 10)
+    let sourceLabel = TNSecondaryTitleLabel(fontWeight: .bold, fontSize: 12)
+    let titleLabel = TNTitleLabel(fontWeight: .bold, fontSize: 12, numberOfLines: 2)
+    let timeLabel = TNSecondaryTitleLabel(fontWeight: .bold, fontSize: 12)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,7 +40,7 @@ class ArticleSearchResultCell: UITableViewCell {
         NSLayoutConstraint.activate([
             articleImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             articleImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            articleImageView.heightAnchor.constraint(equalToConstant: 53),
+            articleImageView.heightAnchor.constraint(equalToConstant: 62),
             articleImageView.widthAnchor.constraint(equalToConstant: 57)
         ])
     }
@@ -52,7 +52,7 @@ class ArticleSearchResultCell: UITableViewCell {
             sourceLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7),
             sourceLabel.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 9),
             sourceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            sourceLabel.heightAnchor.constraint(equalToConstant: 12)
+            sourceLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
     }
     
@@ -63,7 +63,7 @@ class ArticleSearchResultCell: UITableViewCell {
             titleLabel.topAnchor.constraint(equalTo: sourceLabel.bottomAnchor, constant: 3),
             titleLabel.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 9),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            titleLabel.heightAnchor.constraint(equalToConstant: 24)
+            titleLabel.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
@@ -74,7 +74,7 @@ class ArticleSearchResultCell: UITableViewCell {
             timeLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 3),
             timeLabel.leadingAnchor.constraint(equalTo: articleImageView.trailingAnchor, constant: 9),
             timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
-            timeLabel.heightAnchor.constraint(equalToConstant: 12)
+            timeLabel.heightAnchor.constraint(equalToConstant: 14)
         ])
     }
     

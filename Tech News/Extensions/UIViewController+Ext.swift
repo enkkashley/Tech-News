@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 var loadingView: UIView!
 
@@ -35,5 +36,12 @@ extension UIViewController {
             loadingView.removeFromSuperview()
             loadingView = nil
         }
+    }
+    
+    func presentSafariViewController(with urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        
+        let safariViewController = SFSafariViewController(url: url)
+        present(safariViewController, animated: true)
     }
 }

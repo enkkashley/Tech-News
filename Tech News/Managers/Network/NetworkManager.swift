@@ -16,7 +16,8 @@ class NetworkManager {
     func getNews(page: Int, completed: @escaping (Result<Response, TNError>) -> Void) {
         
         let endpoint = Endpoint(path: "top-headlines", queryItems: [
-            URLQueryItem(name: "sources", value: Endpoint.sources()),
+            URLQueryItem(name: "country", value: "us"),
+            URLQueryItem(name: "category", value: "technology"),
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "apiKey", value: "API_KEY")
         ])
@@ -50,12 +51,13 @@ class NetworkManager {
         task.resume()
     }
     
-    func searchNews(with query: String, completed: @escaping (Result<Response, TNError>) -> Void) {
+    func searchNews(with query: String, page: Int, completed: @escaping (Result<Response, TNError>) -> Void) {
         
         let endpoint = Endpoint(path: "everything", queryItems: [
-            URLQueryItem(name: "q", value: query),
+            URLQueryItem(name: "qInTitle", value: query),
             URLQueryItem(name: "domains", value: Endpoint.domains()),
-//            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "language", value: "en"),
+            URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "sortBy", value: "publishedAt"),
             URLQueryItem(name: "apiKey", value: "API_KEY")
         ])
