@@ -36,6 +36,8 @@ class SearchViewController: UIViewController {
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchBar.placeholder = "Search for news on any topic."
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.autocorrectionType = .no
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
